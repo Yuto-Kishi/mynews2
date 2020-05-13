@@ -35,7 +35,7 @@
                                 <input type="file" class="form-control-file" name="image">
                              </div>
                         </div>
-                        <input type="submit" class="btnbtn-primary" value="更新">
+                        <input type="submit" class="btn btn-primary" value="更新">
                     </div>
                 </form>
             </div>
