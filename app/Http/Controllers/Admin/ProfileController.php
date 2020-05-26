@@ -40,6 +40,7 @@ class ProfileController extends Controller
         abort(404);
       }
         return view('admin.profile.edit', ['profile_form' => $profile]);
+        
     }
     
     public function index(Request $request)
@@ -47,12 +48,12 @@ class ProfileController extends Controller
       $cond_title = $request->cond_title;
       if ($cond_title != '') {
           // 検索されたら検索結果を取得する
-          $posts = News::where('title', $cond_title)->get();
+          $posts = Profile::where('title', $cond_title)->get();
       } else {
           // それ以外はすべてのニュースを取得する
-          $posts = News::all();
+          $posts = Profile::all();
       }
-      return view('admin.news.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+      return view('admin.profile.index', ['posts' => $posts, 'cond_title' => $cond_title]);
   }
     
       public function update(Request $request)
