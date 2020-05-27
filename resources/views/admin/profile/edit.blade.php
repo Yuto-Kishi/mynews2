@@ -1,7 +1,8 @@
-@extends('layouts.profile')
-@section('title','プロフィール画面')
+@extends('layouts.admin')
+@section('title', 'プロフィールの編集')
+
 @section('content')
-     <div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h2>プロフィール編集</h2>
@@ -14,27 +15,26 @@
                         </ul>
                     @endif
                     <div class="form-group row">
-                        <label class="col-md-2" for="title">氏名</label>
+                        <label class="col-md-2" for="title">名前</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="name" value="{{ $profile_form->name }}">
+                            <input type="text" class="form-control" name="name" value="{{ $profile_form->title }}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2" for="title">性別</label>
+                        <label class="col-md-2" for="body">趣味</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="gender" value="{{ $profile_form->gender }}">
+                            <textarea class="form-control" name="body" rows="20">{{ $profile_form->body }}</textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2" for="title">趣味</label>
+                        <label class="col-md-2" for="image">自己紹介</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="hobby" value="{{ $profile_form->hobby }}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-2" for="body">自己紹介</label>
-                        <div class="col-md-10">
-                            <textarea class="form-control" name="introduction" rows="20">{{ $profile_form->introduction }}</textarea>
+                            <div class="form-text text-info">
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -45,13 +45,14 @@
                         </div>
                     </div>
                 </form>
+                {{-- 以下を追記　--}}
                 <div class="row mt-5">
                     <div class="col-md-4 mx-auto">
-                        <h2>更新履歴</h2>
+                        <h2>編集履歴</h2>
                         <ul class="list-group">
-                            @if (!is_null($profile_form->logs))
-                                @foreach ($profile_form->logs as $log)
-                                    <li class="list-group-item">{{ $log->updated_at }}</li>
+                            @if ($profile_form->histories != NULL)
+                                @foreach ($profile_form->histories as $history)
+                                    <li class="list-group-item">{{ $history->edited_at }}</li>
                                 @endforeach
                             @endif
                         </ul>

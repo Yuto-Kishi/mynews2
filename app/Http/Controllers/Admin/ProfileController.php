@@ -50,7 +50,7 @@ class ProfileController extends Controller
           // 検索されたら検索結果を取得する
           $posts = Profile::where('title', $cond_title)->get();
       } else {
-          // それ以外はすべてのニュースを取得する
+          
           $posts = Profile::all();
       }
       return view('admin.profile.index', ['posts' => $posts, 'cond_title' => $cond_title]);
@@ -58,30 +58,27 @@ class ProfileController extends Controller
     
       public function update(Request $request)
     {
-        $this->validate($request, News::$rules);
-        $news = News::find($request->id);
-        $news_form = $request->all();
+        $this->validate($request, Profile::$rules);
+        $profile = Profile::find($request->id);
+        $profile_form = $request->all();
         if ($request->remove == 'true') {
-            $news_form['image_path'] = null;
+            $profile_form['image_path'] = null;
         } elseif ($request->file('image')) {
             $path = $request->file('image')->store('public/image');
-            $news_form['image_path'] = basename($path);
-        } else {
-            $news_form['image_path'] = $news->image_path;
-        }
+            $profile_form['image_path'] = basename($path);
+        } 
 
-        unset($news_form['_token']);
-        unset($news_form['image']);
-        unset($news_form['remove']);
-        $news->fill($news_form)->save();
+        unset($profile_form['_token']);
+        unset($profile_form['image']);
+        unset($profile_form['remove']);
+        $news->fill($profile_form)->save();
 
         // 以下を追記
         $history = new History;
-        $history->news_id = $news->id;
         $history->edited_at = Carbon::now();
         $history->save();
 
-        return redirect('admin/news/');
+        return redirect('admin/profile/');
     }
 
     
