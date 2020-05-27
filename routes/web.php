@@ -24,6 +24,7 @@ Route::get('/', function () {
     Route::get('news/edit', 'Admin\NewsController@edit');
     Route::post('news/edit','Admin\NewsController@update');
     Route::get('news/delete','Admin\NewsController@delete');
+    Route::get('/', 'NewsController@index');
     // ProfileController
     Route::get('profile/create','Admin\ProfileController@add');
     Route::post('profile/create','Admin\ProfileController@create');

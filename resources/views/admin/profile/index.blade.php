@@ -38,11 +38,11 @@
                             @foreach($posts as $news)
                                 <tr>
                                     <th>{{ $news->id }}</th>
-                                    <td>{{ \Str::limit($news->title, 100) }}</td>
-                                    <td>{{ \Str::limit($news->body, 250) }}</td>
+                                    <td>{{ \Str::limit($profile->title, 100) }}</td>
+                                    <td>{{ \Str::limit($profile->body, 250) }}</td>
                                     <td>
                                         <div>
-                                            <a href="{{action('Admin\ProfileController@edit',['id' => $news->id]) }}">削除</a>
+                                            <a href="{{action('Admin\ProfileController@edit',['id' => $profile->id]) }}">編集</a>
                                         </div>
                                     </td>
                                 </tr>
