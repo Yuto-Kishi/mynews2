@@ -23,7 +23,7 @@
         
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
         
-        <link href="{{ secure_asset('css/front.css') }}" rel="stylesheet">
+        <link href="{{ secure_asset('css/index.css') }}" rel="stylesheet">
     </head>
     <body>
         <div id="app">
@@ -45,7 +45,7 @@
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
                         
-                       <!-- Authentication Links -->
+                        <!-- Authentication Links -->
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                         @else

@@ -31,8 +31,8 @@ Route::get('/', function () {
     Route::get('profile/edit','Admin\ProfileController@edit');
     Route::post('profile/edit','Admin\ProfileController@update');
     Route::get('profile', 'Admin\ProfileController@index');
+    Route::get('/profile', 'ProfileController@index');
 });
-
     
 Auth::routes();
 
