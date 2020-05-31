@@ -9,9 +9,6 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="caption mx-auto">
-                                
-            
-                                    @endif
                                 </div>
                                 <div class="title p-2">
                                     <h1>{{ str_limit($headline->title, 70) }}</h1>
@@ -34,16 +31,23 @@
                             <div class="text col-md-6">
                                 <div class="date">
                                     {{ $post->updated_at->format('Y年m月d日') }}
-                                </div>
                                 <div class="title">
-                                    {{ str_limit($post->title, 150) }}
+                                    {{ str_limit($post->name, 150) }}
+                                </div>
+                               
+                                <div class="body mt-3">
+                                    {{ str_limit($post->gender, 1500) }}
+                                </div>
+                                 <div class="body mt-3">
+                                    {{ str_limit($post->introduction, 1500) }}
                                 </div>
                                 <div class="body mt-3">
-                                    {{ str_limit($post->body, 1500) }}
+                                    {{ str_limit($post->hobby, 1500) }}
                                 </div>
+                              
                             </div>
                             <div class="image col-md-6 text-right mt-4">
-                                @endif
+                              
                             </div>
                         </div>
                     </div>
